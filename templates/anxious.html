@@ -8,13 +8,13 @@
 {% block main %}
  <h1>Here's what I can help with for: <h1 style="color: orange;">Anxiety</h1></h1>
  <div>
-    <a href="https://www.youtube.com/watch?v=IAODG6KaNBc ">short video provides immediate calm-down techniques</a>
+    <a target = "_blank" href="https://www.youtube.com/watch?v=IAODG6KaNBc ">short video provides immediate calm-down techniques</a>
  </div>
  <div>
-    <a href="https://www.youtube.com/watch?v=Et8j1LK0GU0">15 minute guided meditation and walk through with voiceover</a>
+    <a target = "_blank" href="https://www.youtube.com/watch?v=Et8j1LK0GU0">15 minute guided meditation and walk through with voiceover</a>
  </div>
  <div>
-    <a href="https://www.youtube.com/watch?v=30VMIEmA114">informative video explaining useful methods to calm anxiety</a>
+    <a target = "_blank" href="https://www.youtube.com/watch?v=30VMIEmA114">informative video explaining useful methods to calm anxiety</a>
  </div>
  <h1>Based on your favorites, we recommend</h1>
 Listen to: {{ user[0]["songs"]}}
@@ -29,4 +29,6 @@ Or doing any of your favorite activities: {{ user[0]["activities"] }}
 {{ contact[0]["name2"] }} {{ contact[0]["number2"] }}
 <br>
 {{ contact[0]["name3"] }} {{ contact[0]["number3"] }}
+<br>
+<h2 style="color: darkred;">IN EMERGENCIES, CONTACT 988</h2>
 {% endblock %}

@@ -8,13 +8,13 @@
 {% block main %}
  <h1>Here's what I can help with for: <h1 style="color: red;">Anger</h1></h1>
  <div>
-    <a href = "https://www.youtube.com/watch?v=4obOTmlsTI8">5 minute video to help bring ease, with a soothing voiceover</a>
+    <a target = "_blank" href = "https://www.youtube.com/watch?v=4obOTmlsTI8">5 minute video to help bring ease, with a soothing voiceover</a>
  </div>
  <div>
-    <a href = "https://www.youtube.com/watch?v=BsVq5R_F6RA&list=PLqldimk4xUgk6b1fJkTtS9TJ1uP4_vsNt&index=10">4 minute video on ways to process and overcome your anger</a>
+    <a target = "_blank" href = "https://www.youtube.com/watch?v=BsVq5R_F6RA&list=PLqldimk4xUgk6b1fJkTtS9TJ1uP4_vsNt&index=10">4 minute video on ways to process and overcome your anger</a>
  </div>
  <div>
-    <a href = "https://www.youtube.com/watch?v=kmTEyxWg7Hs&t=44s"> 7-minute video on methods for controlling your anger</a>
+    <a target = "_blank" href = "https://www.youtube.com/watch?v=kmTEyxWg7Hs&t=44s"> 7-minute video on methods for controlling your anger</a>
  </div>
 <h1>Based on your favorites, we recommend</h1>
 Listen to: {{ user[0]["songs"]}}
@@ -29,5 +29,6 @@ Or doing any of your favorite activities: {{ user[0]["activities"] }}
 {{ contact[0]["name2"] }} {{ contact[0]["number2"] }}
 <br>
 {{ contact[0]["name3"] }} {{ contact[0]["number3"] }}
-
+<br>
+<h2 style="color: darkred;">IN EMERGENCIES, CONTACT 988</h2>
 {% endblock %}
