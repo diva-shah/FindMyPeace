@@ -5,5 +5,48 @@
 {% endblock %}
 
 {% block main %} 
-    <h1> You have enterred </h1>
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">How do you feel today?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/" method="post" name = "emotion">
+          <div class="form-group">
+            <input type = "submit" name = "anger" class = "btn btn-primary" value = "Anger">
+          </div>
+          <div class="form-group">
+            <input type = "submit" name = "sad" class = "btn btn-primary" value = "Sad">
+          </div>
+          <div class="form-group">
+            <input type = "submit" name = "stressed" class = "btn btn-primary" value = "Stressed">
+          </div>
+          <div class="form-group">
+            <input type = "submit" name = "anxious" class = "btn btn-primary" value = "Anxious">
+          </div>
+          <!-- <div class="form-group">
+            <input type = "text" name = "feeling" placeholder = "How do you feel?">
+          </div> -->
+          <!-- <button type="submit" class="btn btn-primary">Send</button> -->
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 {% endblock %}

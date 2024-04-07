@@ -7,13 +7,38 @@
 {% block main %}
     <form action="/register" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            <input autocomplete="off" required autofocus class="form-control" name="username" placeholder="Username *" type="text">
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" placeholder="Password" type="password">
+            <input class="form-control" required name="password" placeholder="Password *" type="password">
         </div>
         <div class="form-group">
-            <input class="form-control" name="confirmation" placeholder="Password(re-enter)" type="password">
+            <input class="form-control" required name="confirmation" placeholder="Password(re-enter) *" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" required name="songs" placeholder="Enter some of your favorite songs *">
+        </div>
+        <div class="form-group">
+            <input class="form-control" required name="films" placeholder="Enter some of your favorite tv shows or movies *">
+        </div>
+        Emergent Contacts:
+        <div class="container">
+            <div class="form-group">
+                <input required class="form-control" name="PersonName" placeholder="Enter Emergency Contact's Name *">
+                <input required class="form-control" name="PhoneNumber" placeholder="Enter Emergency Contact's Number *">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="PersonName2" placeholder="Enter Emergency Contact's Name">
+                <input class="form-control" name="PhoneNumber2" placeholder="Enter Emergency Contact's Number">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="PersonName3" placeholder="Enter Emergency Contact's Name">
+                <input class="form-control" name="PhoneNumber3" placeholder="Enter Emergency Contact's Number">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" required name="activities" placeholder="Enter some of your favorite activities *">
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>

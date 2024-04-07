@@ -8,7 +8,8 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required
-
+# from model import myModel
+# from sklearn.feature_extraction.text import TfidfVectorizer
 
 # API_KEY
 # export API_KEY=pk_3142b8f25f584f958e90790311d4dc28
@@ -50,11 +51,32 @@ Session(app)
 # if not os.environ.get("API_KEY"):
 #     raise RuntimeError("API_KEY not set")
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
-    """Show portfolio of stocks"""
     if request.method == 'GET':
+        return render_template("index.html")
+    else:
+        anger = request.form.get("anger")
+        sad = request.form.get("sad")
+        stressed = request.form.get("stressed")
+        anxious = request.form.get("anxious")
+
+        if anger != None:
+            return render_template("anger.html")
+        if sad != None:
+            return render_template("sad.html")
+        if stressed != None:
+            return render_template("stress.html")
+        if anxious != None:
+            return render_template("anxious.html")
+        # emotion = request.form.get("feeling")
+        # model = myModel()
+        # vectorizer = TfidfVectorizer()
+        # e = vectorizer.fit_transform(emotion)
+        # curEmotion = model.predict(e)
+        # print("TEXT: ", emotion)
+        # print("PREDICTED EMOTION: ", curEmotion)
         return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
@@ -114,14 +136,6 @@ def register():
         if request.form.get("confirmation") != request.form.get("password"):
             return apology("Passwords are not the same!")
 
-        if not request.form.get("username"):
-            return apology("Missing Username")
-
-        if not request.form.get("password"):
-            return apology("Missing Password")
-
-        if not request.form.get("confirmation"):
-            return apology("You forgot to re-enter your password!")
         password = request.form.get("password")
         for x in password:
             if x == '!' or x == '?' or x == '.':
@@ -142,6 +156,19 @@ def register():
         if (len(check2) > 0):
             return apology("Password Taken")
         db.execute("INSERT INTO users (username,hash) VALUES(?,?)", request.form.get("username"), generate_password_hash(request.form.get("password")))
+
+        # id = db.execute("SELECT user_id FROM users WHERE username = ?", request.form.get("username"))
+        # name1 = request.form.get("PersonName")
+        # num1 = request.form.get("PhoneNumber")
+
+        # if request.form.get("PersonName2") != None:
+        #     name2 = request.form.get("PersonName2")
+        #     num2 = request.form.get("PhoneNumber2")
+        # if request.form.get("PersonName3") != None:
+        #     name3 = request.form.get("PersonName3")
+        #     num3 = request.form.get("PhoneNumber3")
+
+        # db.execute("INSERT INTO contactInfo (contact_user_id,name1,num1,name2,num2,name3,num3) VALUES(?,?,?,?,?,?,?)", id, name1,num1,name2,num2,name3,num3)
     else:
         return render_template("register.html")
     return redirect("/")
