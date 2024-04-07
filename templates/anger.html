@@ -16,5 +16,18 @@
  <div>
     <a href = "https://www.youtube.com/watch?v=kmTEyxWg7Hs&t=44s"> 7-minute video on methods for controlling your anger</a>
  </div>
+<h1>Based on your favorites, we recommend</h1>
+Listen to: {{ user[0]["songs"]}}
+<br>
+Watch: {{ user[0]["films"] }}
+<br>
+Or doing any of your favorite activities: {{ user[0]["activities"] }}
+
+<h1>Contact</h1>
+{{ contact[0]["name1"] }} {{ contact[0]["number1"] }}
+<br>
+{{ contact[0]["name2"] }} {{ contact[0]["number2"] }}
+<br>
+{{ contact[0]["name3"] }} {{ contact[0]["number3"] }}
 
 {% endblock %}

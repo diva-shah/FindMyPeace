@@ -110,10 +110,11 @@ def train_classifier(data):
     print("Accuracy:", accuracy)
 
     # Print confusion matrix and classification report
-    print("\nConfusion Matrix:")
-    print(confusion_matrix(y_test, y_pred))
+    # print("\nConfusion Matrix:")
+    # print(confusion_matrix(y_test, y_pred))
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred))
+    return classifier
 
 
 def main():
@@ -121,10 +122,12 @@ def main():
     data_with_statements = generate_statements()
 
     # Train classifier and evaluate
-    train_classifier(data_with_statements)
+    c = train_classifier(data_with_statements)
+    c.predict("i'm feeling sad because i didnt sleep")
 
 
 if __name__ == "__main__":
     main()
+
 
 

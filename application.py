@@ -61,15 +61,17 @@ def index():
         sad = request.form.get("sad")
         stressed = request.form.get("stressed")
         anxious = request.form.get("anxious")
-
+        userInfo = db.execute("SELECT * FROM users WHERE user_id = ?", session['user_id'])
+        contact = db.execute("SELECT * FROM contactInfo WHERE contact_user_id = ?", session['user_id'])
+        print("here")
         if anger != None:
-            return render_template("anger.html")
+            return render_template("anger.html", user=userInfo, contact=contact)
         if sad != None:
-            return render_template("sad.html")
+            return render_template("sad.html", user=userInfo, contact = contact)
         if stressed != None:
-            return render_template("stress.html")
+            return render_template("stress.html", user=userInfo, contact = contact)
         if anxious != None:
-            return render_template("anxious.html")
+            return render_template("anxious.html", user=userInfo, contact = contact)
         # emotion = request.form.get("feeling")
         # model = myModel()
         # vectorizer = TfidfVectorizer()
@@ -155,20 +157,27 @@ def register():
         check2 = db.execute("SELECT hash FROM users WHERE hash = ?", generate_password_hash(request.form.get("password")))
         if (len(check2) > 0):
             return apology("Password Taken")
-        db.execute("INSERT INTO users (username,hash) VALUES(?,?)", request.form.get("username"), generate_password_hash(request.form.get("password")))
+        
+        songs = request.form.get("songs")
+        films = request.form.get("films")
+        acts = request.form.get("activities")
+        db.execute("INSERT INTO users (username,hash, songs, films, activities) VALUES(?,?,?,?,?)", request.form.get("username"), generate_password_hash(request.form.get("password")), songs, films, acts)
 
         # id = db.execute("SELECT user_id FROM users WHERE username = ?", request.form.get("username"))
-        # name1 = request.form.get("PersonName")
-        # num1 = request.form.get("PhoneNumber")
+        # print(id)
+        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        session['user_id'] = rows[0]["user_id"]
+        name1 = request.form.get("PersonName")
+        num1 = request.form.get("PhoneNumber")
 
-        # if request.form.get("PersonName2") != None:
-        #     name2 = request.form.get("PersonName2")
-        #     num2 = request.form.get("PhoneNumber2")
-        # if request.form.get("PersonName3") != None:
-        #     name3 = request.form.get("PersonName3")
-        #     num3 = request.form.get("PhoneNumber3")
+        if request.form.get("PersonName2") != None:
+            name2 = request.form.get("PersonName2")
+            num2 = request.form.get("PhoneNumber2")
+        if request.form.get("PersonName3") != None:
+            name3 = request.form.get("PersonName3")
+            num3 = request.form.get("PhoneNumber3")
 
-        # db.execute("INSERT INTO contactInfo (contact_user_id,name1,num1,name2,num2,name3,num3) VALUES(?,?,?,?,?,?,?)", id, name1,num1,name2,num2,name3,num3)
+        db.execute("INSERT INTO contactInfo (contact_user_id,name1,number1,name2,number2,name3,number3) VALUES(?,?,?,?,?,?,?)", session['user_id'], name1,num1,name2,num2,name3,num3)
     else:
         return render_template("register.html")
     return redirect("/")
